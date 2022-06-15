@@ -9,10 +9,11 @@ const btnCancel = document.querySelector('.btnCancel');
 const form = document.querySelector("#form");
 const formBg = document.querySelector("#formBg");
 const btnNewBook = document.querySelector("#btnNewBook");
+const totalBooks = document.querySelector('.totalBooks');
+const readBooks = document.querySelector('.readBooks');
+const notReadBooks = document.querySelector('.notReadBooks');
 
 let myLibrary = [];
-
-// Book Object Constructor
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -21,15 +22,11 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-//Return book read status
-
 Book.prototype.readStatus = function () {
   let value = "";
   value = value + this.read;
   return value;
 };
-
-// Create new Book Object + add to myLibrary
 
 function addBookToLibray(title, author, pages, read) {
   title = titleF.value;
@@ -88,6 +85,7 @@ function createCard(element) {
   } else {
     btnReadStatus.textContent = "Read";
   }
+  
   btnReadStatus.addEventListener("click", function () {
     if (element.read == true) {
       element.read = false;
@@ -98,30 +96,28 @@ function createCard(element) {
     }
     cardReadStatus.textContent = "Read: " + element.readStatus();
   });
+
   cardButtons.appendChild(btnReadStatus);
 
   const btnDelete = document.createElement("button");
   btnDelete.setAttribute("class", "btnCard btnDelete");
   btnDelete.textContent = "Delete";
-  // delete book
+
   function deleteBook() {
     let value = cardContainer.getAttribute("data");
     myLibrary.splice(value , 1);
     reload();
   }
+
   btnDelete.addEventListener("click", deleteBook);
   cardButtons.appendChild(btnDelete);
 
   cardContainer.appendChild(cardButtons);
 }
 
-// Show form btn
 btnNewBook.addEventListener("click", showForm);
 
-// Add book btn
 btnAdd.addEventListener("click", addBookToLibray);
-
-//Cancel add btn 
 
 btnCancel.addEventListener('click' , cancelAdd);
 
@@ -147,17 +143,41 @@ function cancelAdd(){
   hideForm();
 }
 
-//Show Book object data in cards
 
 function showBooks() {
   myLibrary.forEach((element) => createCard(element));
 }
 
-//reload main div
 
 function reload() {
   main.replaceChildren();
+  libraryInfo();
   showBooks();
 }
 
+function libraryInfo() {
+
+  let total = 0;
+  let readBook = 0;
+  let notReadBook = 0;
+
+myLibrary.forEach(element => {
+
+  if (element.read == true) {
+    total = total + 1;
+    readBook = readBook +1;
+  } else {
+    total = total + 1;
+    notReadBook = notReadBook + 1
+  }
+
+});
+
+totalBooks.textContent = 'Total Books: ' + total;
+readBooks.textContent = 'Read Books: ' + readBook;
+notReadBooks.textContent = 'Not Read Books: ' + notReadBook;
+
+}
+
 hideForm();
+libraryInfo();
