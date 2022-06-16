@@ -5,13 +5,13 @@ const authorF = document.querySelector("#authorF");
 const pagesF = document.querySelector("#pagesF");
 const readF = document.querySelector("#readF");
 const btnAdd = document.querySelector(".btnAdd");
-const btnCancel = document.querySelector('.btnCancel');
+const btnCancel = document.querySelector(".btnCancel");
 const form = document.querySelector("#form");
 const formBg = document.querySelector("#formBg");
 const btnNewBook = document.querySelector("#btnNewBook");
-const totalBooks = document.querySelector('.totalBooks');
-const readBooks = document.querySelector('.readBooks');
-const notReadBooks = document.querySelector('.notReadBooks');
+const totalBooks = document.querySelector(".totalBooks");
+const readBooks = document.querySelector(".readBooks");
+const notReadBooks = document.querySelector(".notReadBooks");
 
 let myLibrary = [];
 
@@ -85,7 +85,7 @@ function createCard(element) {
   } else {
     btnReadStatus.textContent = "Read";
   }
-  
+
   btnReadStatus.addEventListener("click", function () {
     if (element.read == true) {
       element.read = false;
@@ -95,6 +95,7 @@ function createCard(element) {
       btnReadStatus.textContent = "Not read";
     }
     cardReadStatus.textContent = "Read: " + element.readStatus();
+    libraryInfo();
   });
 
   cardButtons.appendChild(btnReadStatus);
@@ -105,7 +106,7 @@ function createCard(element) {
 
   function deleteBook() {
     let value = cardContainer.getAttribute("data");
-    myLibrary.splice(value , 1);
+    myLibrary.splice(value, 1);
     reload();
   }
 
@@ -119,9 +120,7 @@ btnNewBook.addEventListener("click", showForm);
 
 btnAdd.addEventListener("click", addBookToLibray);
 
-btnCancel.addEventListener('click' , cancelAdd);
-
-
+btnCancel.addEventListener("click", cancelAdd);
 
 function clearForm() {
   titleF.value = "";
@@ -138,16 +137,14 @@ function showForm() {
   formBg.style.display = "inline";
 }
 
-function cancelAdd(){
+function cancelAdd() {
   clearForm();
   hideForm();
 }
 
-
 function showBooks() {
   myLibrary.forEach((element) => createCard(element));
 }
-
 
 function reload() {
   main.replaceChildren();
@@ -156,27 +153,23 @@ function reload() {
 }
 
 function libraryInfo() {
-
   let total = 0;
   let readBook = 0;
   let notReadBook = 0;
 
-myLibrary.forEach(element => {
+  myLibrary.forEach((element) => {
+    if (element.read == true) {
+      total = total + 1;
+      readBook = readBook + 1;
+    } else {
+      total = total + 1;
+      notReadBook = notReadBook + 1;
+    }
+  });
 
-  if (element.read == true) {
-    total = total + 1;
-    readBook = readBook +1;
-  } else {
-    total = total + 1;
-    notReadBook = notReadBook + 1
-  }
-
-});
-
-totalBooks.textContent = 'Total Books: ' + total;
-readBooks.textContent = 'Read Books: ' + readBook;
-notReadBooks.textContent = 'Not Read Books: ' + notReadBook;
-
+  totalBooks.textContent = "Total Books: " + total;
+  readBooks.textContent = "Read Books: " + readBook;
+  notReadBooks.textContent = "Not Read Books: " + notReadBook;
 }
 
 hideForm();

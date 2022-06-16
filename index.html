@@ -1,80 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-
+  <body>
     <div id="mainContainer">
+      <div id="formBg">
+        <div id="form">
 
-        <div id="formBg">
-            <div id="form">
-                <div>   
-                    <label for="titleF">Title</label>
-                    <input type="text" name="titleF" id="titleF">
-                </div>
-    
-                <div>
-                    <label for="authorF">Author</label>
-                    <input type="text" name="authorF" id="authorF">
-                </div>
-    
-                <div>
-                    <label for="pagesF">Pages</label>
-                    <input type="number" name="pagesF" id="pagesF">
-                </div>
-    
-                <div>
-                    <label for="readF">Read</label>
-                    <input type="checkbox" name="readF" id="readF">
-                </div>
-    
-                <div>
-                    <button class="btnAdd">Add</button>
-                    <button class="btnCancel">Cancel</button>
-                </div>
-            </div>
+          <div class="formItem">
+            <label for="titleF">Title</label>
+            <input type="text" name="titleF" id="titleF" />
+          </div>
+
+          <div class="formItem">
+            <label for="authorF">Author</label>
+            <input type="text" name="authorF" id="authorF" />
+          </div>
+
+          <div class="formItem">
+            <label for="pagesF">Pages</label>
+            <input type="number" name="pagesF" id="pagesF" />
+          </div>
+
+          <div class="formCheck">
+            <label for="readF">Read</label>
+            <input type="checkbox" name="readF" id="readF" />
+          </div>
+
+          <div class="formButtons">
+            <button class="btnAdd">Add</button>
+            <button class="btnCancel">Cancel</button>
+          </div>
+      
+        </div>
+      </div>
+
+      <div id="header">
+        <div>
+          <h1>Library</h1>
         </div>
 
-        <div id="header">
+        <div>
+          <div class="totalBooks"></div>
 
-            <div>
-                <h1>Library</h1>
-            </div>
+          <div class="readBooks"></div>
 
-            <div>   
-
-                <div class="totalBooks">
-                    
-                </div>
-
-                <div class="readBooks">
-                    
-                </div>
-
-                <div class="notReadBooks">
-                    
-                </div>
-            </div>
+          <div class="notReadBooks"></div>
         </div>
-        <div id="newBtn">
-            <button id="btnNewBook"> New Book </button>
-
-            
-
-        </div>
+      </div>
+      <div id="newBtn">
+        <button id="btnNewBook">New Book</button>
+      </div>
+      <div id="mainWraper">
         <div id="main"></div>
-        <div id="footer"></div>
-
-       
-
+      </div>
+    
+      <div id="footer">
+        <a
+        class="link"
+        href="https://github.com/RodrigoAlv97/library"
+        target="_blank"
+        >GitHub</a
+      >
+      </div>
     </div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
